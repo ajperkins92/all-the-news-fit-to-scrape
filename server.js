@@ -3,7 +3,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 var express = require("express");
 var app = express();
