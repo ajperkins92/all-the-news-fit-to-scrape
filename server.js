@@ -4,6 +4,7 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 var PORT = process.env.PORT || 3000;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 var express = require("express");
 var app = express();
@@ -23,7 +24,7 @@ app.engine( "handlebars", exphbs({defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/articlesdb", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
